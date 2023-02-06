@@ -21,16 +21,17 @@
         <legend>Edit this grocery item:</legend>
 
 
-
-
         <!-- TODO: Remove the next paragraph and use the `form` object passed in 
             from the route to render a form. -->
-        <p><em>Form fields go here!</em></p>
+        <!-- <p><em>Form fields go here!</em></p> -->
         {{ form.name.label }}
         {{ form.name }}
         
         {{ form.price.label }}
         {{ form.price(placeholder="0.00") }}
+
+        {{ form.category.label }}
+        {{ form.category }}
         
         {{ form.photo_url.label }}
         {{ form.photo_url }}

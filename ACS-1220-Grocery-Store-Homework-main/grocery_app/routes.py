@@ -77,12 +77,18 @@ def store_detail(store_id):
     # - update the GroceryStore object and save it to the database,
     # - flash a success message, and
     # - redirect the user to the store detail page.
+     
     if form.validate_on_submit():
-        db.session.add(store)
+        store = GroceryStore(
+            title=form.title.data,
+            address=form.address.data,
+        )
+        # db.session.add(store) don't need this for updating
         db.session.commit()
 
         flash('Store updated successfully.')
         return redirect(url_for('main.store_detail', store_id=store_id))
+        # How to get it so the info is updated on the detail page?
 
     # TODO: Send the form to the template and use it to render the form fields
     store = GroceryStore.query.get(store_id)
@@ -99,7 +105,13 @@ def item_detail(item_id):
     # - flash a success message, and
     # - redirect the user to the item detail page.
     if form.validate_on_submit():
-        db.session.add(item)
+        item = GroceryItem(
+            name=form.name.data,
+            price=form.price.data,
+            category=form.category.data,
+            photo_url=form.photo_url.data,
+            store=form.store.data
+        )
         db.session.commit()
 
         flash('Item updated successfully.')

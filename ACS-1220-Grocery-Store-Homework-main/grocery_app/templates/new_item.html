@@ -3,17 +3,56 @@
 
 <h1>New Item</h1>
 
-<form method="POST">
+<form method="POST" action="{{ url_for('main.new_item') }}">
     <fieldset>
-        <legend>Please enter your information:</legend>
+        <legend>Please enter item information:</legend>
 
+        {{ form.name.label }}
+        {{ form.name }}
+        <!-- Show form errors -->
+        <ul>
+        {% for error in form.name.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        
+        {{ form.price.label }}
+        {{ form.price(placeholder="0.00") }}
+        <!-- Show form errors -->
+        <ul>
+            {% for error in form.price.errors %}
+                <li class="error">{{ error }}</li>
+            {% endfor %}
+         </ul>
+        
+        {{ form.category.label }}
+        {{ form.category }}
+        <!-- Show form errors -->
+        <ul>
+        {% for error in form.category.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        
+        {{ form.photo_url.label }}
+        {{ form.photo_url }}
+        <!-- Show form errors -->
+        <ul>
+            {% for error in form.photo_url.errors %}
+                <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
 
+        {{ form.store.label }}
+        {{ form.store }}
+        <!-- Show form errors -->
+        <ul>
+            {% for error in form.store.errors %}
+                <li class="error">{{ error }}</li>
+            {% endfor %}
+        </ul>
 
-        <!-- TODO: Remove the next paragraph and use the `form` object passed in 
-            from the route to render a form. -->
-        <p><em>Form fields go here!</em></p>
-
-        <input type="submit" value="Submit">
+        {{ form.submit }}
     </fieldset>
 </form>
 

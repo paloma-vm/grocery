@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, SelectField, SubmitField, FloatField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
-from wtforms.validators import DataRequired, Length, URL
+from wtforms.validators import DataRequired, Length, URL, NumberRange
 from grocery_app.models import *
 
 class GroceryStoreForm(FlaskForm):
@@ -38,7 +38,10 @@ class GroceryItemForm(FlaskForm):
             DataRequired(), 
             Length(min=3, max=80, message="Your item name needs to be betweeen 3 and 80 chars")
             ])
-    price = FloatField('Item Price')
+    price = FloatField('Item Price',
+        validators=[
+            NumberRange(min=0, max=9999, message="Your item price needs to be a number under 1,000")
+        ])
     category = SelectField('Category', choices=ItemCategory.choices())
     photo_url = StringField('Photo URL',
         validators=[
