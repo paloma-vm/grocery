@@ -79,10 +79,9 @@ def store_detail(store_id):
     # - redirect the user to the store detail page.
      
     if form.validate_on_submit():
-        store = GroceryStore(
-            title=form.title.data,
-            address=form.address.data,
-        )
+        store.title = form.title.data
+        store.address = form.address.data
+        
         # db.session.add(store) don't need this for updating
         db.session.commit()
 
@@ -105,13 +104,12 @@ def item_detail(item_id):
     # - flash a success message, and
     # - redirect the user to the item detail page.
     if form.validate_on_submit():
-        item = GroceryItem(
-            name=form.name.data,
-            price=form.price.data,
-            category=form.category.data,
-            photo_url=form.photo_url.data,
-            store=form.store.data
-        )
+        item.name = form.name.data
+        item.price = form.price.data
+        item.category = form.category.data
+        item.photo_url = form.photo_url.data
+        item.store = form.store.data
+    
         db.session.commit()
 
         flash('Item updated successfully.')

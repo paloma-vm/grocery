@@ -38,14 +38,11 @@ class GroceryItemForm(FlaskForm):
             DataRequired(), 
             Length(min=3, max=80, message="Your item name needs to be betweeen 3 and 80 chars")
             ])
-    price = FloatField('Item Price',
-        validators=[
-            NumberRange(min=0, max=9999, message="Your item price needs to be a number under 1,000")
-        ])
+    price = FloatField('Item Price')
     category = SelectField('Category', choices=ItemCategory.choices())
     photo_url = StringField('Photo URL',
         validators=[
-            DataRequired(), 
+            DataRequired(),
             Length(min=5, max=80, message="Your Photo URL needs to be betweeen 5 and 80 chars")
             ])
     store = QuerySelectField('Store', query_factory=lambda: GroceryStore.query, allow_blank=False)
