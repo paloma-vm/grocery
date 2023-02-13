@@ -5,7 +5,8 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 # Import app and db from events_app package so that we can run app
 
-from grocery_app import db
+from grocery_app.extensions import db, bcrypt
+
 
 
 main = Blueprint("main", __name__)
