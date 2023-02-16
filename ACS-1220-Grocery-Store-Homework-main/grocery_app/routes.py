@@ -152,8 +152,10 @@ def add_to_shopping_list(item_id):
 def shopping_list():
     # ... get logged in user's shopping list items ...
     # ... display shopping list items in a template ...
-    user = current_user
-    return redirect(url_for('main.shopping_list', user_id=user.id))
+    
+    users_list = current_user.shopping_list
+    return render_template('shopping_list.html', users_list=users_list)
+    # return redirect(url_for('main.shopping_list', user_id=current_user.id, users_list=users_list))
 
 
 # LOGIN ROUTES -------------------------

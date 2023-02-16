@@ -5,6 +5,14 @@
 
 <p><img src="{{ item.photo_url }}" width="250px" height="250px"></p>
 
+{% if current_user.is_authenticated %}
+
+    <form action="/add_to_shopping_list/{{ item.id }}" method="POST">
+        <button type="submit" value="Add to Shopping List">Add to Shopping List</button>
+    </form>
+
+{% endif %}
+
 <p><strong>Price:</strong> {{ item.price }}</p>
 
 <p><strong>Category:</strong> {{ item.category }}</p>

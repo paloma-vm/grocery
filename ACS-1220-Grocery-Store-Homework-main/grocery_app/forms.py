@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, DateField, SelectField, SubmitField, FloatField, PasswordField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.validators import DataRequired, Length, URL, NumberRange, ValidationError
-# from grocery_app.__init__ import app, db, bcrypt
+from grocery_app.extensions import app, db, bcrypt
 from grocery_app.models import User, GroceryItem, GroceryStore, ItemCategory
 
 
